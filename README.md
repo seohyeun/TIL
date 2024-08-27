@@ -1,2 +1,2 @@
 # TIL
-SQLD &amp; Tableau 
+SQL &amp; Tableau 
