@@ -1,0 +1,2 @@
+# TIL
+SQLD &amp; Tableau 
