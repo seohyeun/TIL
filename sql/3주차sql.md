@@ -1,0 +1,45 @@
+# 3주차
+
+## 1번 문제
+
+```sql
+SELECT U.USER_ID,
+    U.NICKNAME,
+    SUM(B.PRICE) AS TOTAL_AMOUNT
+FROM 
+    USED_GOODS_BOARD B
+JOIN 
+    USED_GOODS_USER U ON B.WRITER_ID = U.USER_ID
+WHERE 
+    B.STATUS = 'DONE'
+GROUP BY 
+    U.USER_ID, U.NICKNAME
+HAVING 
+    SUM(B.PRICE) >= 700000
+ORDER BY 
+    TOTAL_AMOUNT ASC;
+```
+조건이 여러가지라 처음에 'DONE'이라는 조건을 이용하는 것을 놓쳤었다
+
+## 2번 문제
+
+```sql
+SELECT I.ITEM_ID, I.ITEM_NAME, I.RARITY
+FROM ITEM_INFO I
+LEFT JOIN ITEM_TREE T ON I.ITEM_ID = T.PARENT_ITEM_ID
+WHERE T.PARENT_ITEM_ID IS NULL
+ORDER BY I.ITEM_ID DESC;
+```
+
+뭐가 계속 오류인가했는데 내림차순,,,
+
+## 3번 문제
+
+```sql
+SELECT ID, EMAIL, FIRST_NAME, LAST_NAME
+FROM DEVELOPERS
+WHERE (SKILL_CODE & 256) != 0  
+   OR (SKILL_CODE & 1024) != 0 
+ORDER BY ID ASC;
+```
+비트 연산자를 몰랐어서 검색하면서 하느라 어려웠다.. 신기하다
